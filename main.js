@@ -1,30 +1,49 @@
-let api = document.getElementById('api-key');
+let apiKey = document.getElementById('api-key');
 let address = document.getElementById('address');
 let norad = document.getElementById('norad');
-let searchButton = document.getElementById('search')
-
+let searchButton = document.getElementById('search');
+let satLat = 0;
+let satLon = 0;
 
 
 
 async function getMapboxLocate() {
-    let request = await fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?access_token=pk.eyJ1IjoiaGlwcGlldGFvaXN0IiwiYSI6ImNrcndlaTVpbDAyZngydXBrOTVhNGh0enUifQ.797HJKCR1juYl6NueiTKGw&print=pretty");
+    console.log('getMapboxLocate Runs');
+    let request = await fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/' + address.value + '.json?access_token=' + apiKey.value);
     let requestData = await request.json();
-    console.log(requestData);
+
+    console.log('requestData', requestData)
+    setAddressLonLog(requestData)
+        .then(function () {
+            console.log(satLat);
+            console.log(satLon);
+        })
+    return requestData
 }
 
-getMapboxLocate()
+
 
 async function getSatelliteLocate(lon, lat, passes, days, visibility) {
 
 
 }
 
-// function getAddress(address) {
-//     console.log(address.innerText)
-// }
+async function setAddressLonLog(dataObj) {
+    // // Get the address of the input
+    // let request = await fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/' + address.value + '.json?access_token=' + apiKey.value);
+    // let requestData = await request.json();
+    console.log(dataObj);
+    // requestData now has arrays and information attached to it
+    satLon = dataObj.features[0].center[0]
+    satLat = dataObj.features[0].center[1];
+    console.log(satLat);
+    console.log(satLon);
+}
+
+getMapboxLocate()
 
 searchButton.addEventListener('click', function () {
-    console.log(address.value)
-
-    getAddress()
+    getMapboxLocate()
+    console.log(satLat);
+    console.log(satLon);
 })
