@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,14 @@
     <title>Satellite Viewer</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&family=Roboto:wght@400&display=swap"
+        rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> -->
+
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <div class="content">
@@ -17,7 +23,7 @@
         <h1>
             When can I see a certain satellite?
         </h1>
-        
+
         <div class="section">
             <div class="row">
                 <h2>
@@ -30,65 +36,77 @@
             </div>
             <div class="row">
                 <label>Address</label>
-                <input id="address" />
+                <input id="address" placeholder="house# , street , city , state , Zip" value="canon city, co , 81212" />
             </div>
             <div class="row">
                 <label>Satellite NORAD</label>
-                <input id="norad" />
+                <input id="norad" value="25544" />
             </div>
             <div class="row">
-                <button id="search">
+                <button class='locationer' id="search">
                     Search
+                </button>
+                <button class='locationer' id="my-location">
+                    Current Location
                 </button>
             </div>
         </div>
 
-        <div class="section">
-            <div class="row">
+        <div class="satellite-section">
+            <div style="width:100%;text-align:center;margin-bottom:50px;">
                 <h2>
                     Notable Satellites
                 </h2>
             </div>
-            <div class="row">
-                <div class="title">
-                    <b>Name</b>
+            <div id="notable-satellites">
+                <div class="card">
+                    <button class="img-button" id='space-station-button'>
+                        <img class="img"
+                            src="https://assets3.thrillist.com/v1/image/2782789/size/tmg-article_default_mobile.jpg"
+                            alt="International Space Station">
+                        <div class="satellite-number" id='ISS#'>25544</div>
+                        <div class='station-name'>Int. Space Station</div>
+                    </button>
                 </div>
-                <div class="title">
-                    <b>NORAD (Satellite ID)</b>
+                <div class="card">
+                    <button class="img-button" id='hubble-space-telescope-button'>
+                        <img class='img' src="https://www.thespacereview.com/archive/39a.jpg" alt="Hubble Telescope">
+                        <div class="satellite-number" id='hubble#'>20580</div>
+                        <div class="station-name">Hubble Space Telescope
+                        </div>
+                    </button>
+
+                </div>
+                <div class="card">
+
+                    <button class="img-button" id='space-x-dragon'>
+                        <img class='img'
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Crew_Dragon_at_the_ISS_for_Demo_Mission_1_%28cropped%29.jpg/1280px-Crew_Dragon_at_the_ISS_for_Demo_Mission_1_%28cropped%29.jpg"
+                            alt="Space X Dragon">
+                        <div class="satellite-number" id='spaceDragon#'>
+                            48342
+                        </div>
+                        <div class="station-name">
+                            SpaceX Dragon
+                        </div>
+                    </button>
                 </div>
             </div>
-            <div class="row">
-                <div class="item">
-                    Int. Space Station
-                </div>
-                <div class="item">
-                    25544
-                </div>
-            </div>
-            <div class="row">
-                <div class="item">
-                    Hubble Space Telescope
-                </div>
-                <div class="item">
-                    20580
-                </div>
-            </div>
-            <div class="row">
-                <div class="item">
-                    SpaceX Dragon
-                </div>
-                <div class="item">
-                    46920
-                </div>
-            </div>
-            <div class="row">
-                <b>Find more of the brightest satellites' NORAD IDs&nbsp;<a href="https://www.n2yo.com/satellites/?c=1">here</a>.</b>
+            <div class="row" style="margin-top:50px">
+                <b>Find more of the brightest satellites' NORAD IDs&nbsp;<br><a
+                        href="https://www.n2yo.com/satellites/?c=1">here</a>.</b>
             </div>
         </div>
 
     </div>
 
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script> -->
     <script src="apiKey.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
